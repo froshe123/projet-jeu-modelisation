@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cbry3khtsolgw"]
+
+[ext_resource type="Script" uid="uid://nt10odrprxag" path="res://screamer.gd" id="1_c5v53"]
+[ext_resource type="Texture2D" uid="uid://ct462n1gvi3ml" path="res://assets/F677D00C-A2AF-4D6C-B366-B99C15448171.png" id="2_2p01n"]
+
+[node name="Node2D" type="Node2D" unique_id=595586225]
+script = ExtResource("1_c5v53")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1802798575]
+
+[node name="sprite" type="Sprite2D" parent="CanvasLayer" unique_id=514602475]
+position = Vector2(918.0001, 486)
+scale = Vector2(4.783, 4.042)
+texture = ExtResource("2_2p01n")
+
+[node name="Timer" type="Timer" parent="." unique_id=1932927873]

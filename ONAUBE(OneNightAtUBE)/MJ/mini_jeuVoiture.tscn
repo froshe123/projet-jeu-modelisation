@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dcn6epxvxjunb"]
+
+[ext_resource type="PackedScene" uid="uid://bvnejwhf4ouin" path="res://MJ/mini_jeuVoiturepastoiucher.tscn" id="1_kkuv8"]
+
+[node name="Node3D" type="Node3D" unique_id=1819507674]
+
+[node name="jeuvoiture" parent="." unique_id=695732037 instance=ExtResource("1_kkuv8")]
+
+[editable path="jeuvoiture"]
