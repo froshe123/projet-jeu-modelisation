@@ -1,0 +1,5 @@
+res://final.tscn
+res://robot.tscn
+res://robot.gd
+res://robots_ui.gd
+res://gameState.gd

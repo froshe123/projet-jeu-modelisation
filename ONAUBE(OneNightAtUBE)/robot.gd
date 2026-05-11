@@ -258,11 +258,11 @@ func _try_unstuck() -> void:
 			_go_to_random_wp()
 			_stuck_attempts = 0
 		_:
-			var nearest := _nearest_wp(global_position)
-			if nearest >= 0 and nearest < _wps.size():
-				global_position = _wps[nearest].global_position + Vector3(0, 0.2, 0)
+			var rng_dir := Vector3(randf_range(-1.0, 1.0), 0.0, randf_range(-1.0, 1.0)).normalized()
+			velocity.x = rng_dir.x * speed * 2.0
+			velocity.z = rng_dir.z * speed * 2.0
+			velocity.y = 4.0
 			_go_to_random_wp()
-			_stuck_attempts = 0
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

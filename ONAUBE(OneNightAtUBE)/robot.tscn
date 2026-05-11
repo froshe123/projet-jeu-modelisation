@@ -8,8 +8,8 @@
 radius = 0.42041016
 height = 1.4707031
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_gv0v2"]
-radius = 7.818
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhfw1"]
+size = Vector3(10, 1, 10)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3cn6f"]
 radius = 15.0
@@ -27,7 +27,8 @@ shape = SubResource("CapsuleShape3D_gv0v2")
 [node name="Area3D" type="Area3D" parent="." unique_id=867660188]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1427283359]
-shape = SubResource("SphereShape3D_gv0v2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5248754, 0)
+shape = SubResource("BoxShape3D_yhfw1")
 
 [node name="Area3D2" type="Area3D" parent="." unique_id=57160904]
 
@@ -53,7 +54,7 @@ max_distance = 35.0
 [node name="LEROBOT" parent="." unique_id=540689249 instance=ExtResource("3_yhfw1")]
 transform = Transform3D(-0.7, 0, -6.119594e-08, 0, 0.7, 0, 6.119594e-08, 0, -0.7, 0.102440834, -1.842168, 0.120419025)
 
-[node name="Skeleton3D" parent="LEROBOT/Armature" parent_id_path=PackedInt32Array(540689249, 257582004) index="0" unique_id=1414591196]
+[node name="Skeleton3D" parent="LEROBOT/Armature" parent_id_path=PackedInt32Array(540689249, 493010175) index="0" unique_id=181244650]
 bones/0/position = Vector3(0.033180714, -0.08364213, -1.4572376)
 bones/0/rotation = Quaternion(0.6709489, -0.05479244, -0.01908561, -0.73923004)
 bones/1/rotation = Quaternion(-0.09789248, 0.028147824, -0.003969671, 0.994791)
