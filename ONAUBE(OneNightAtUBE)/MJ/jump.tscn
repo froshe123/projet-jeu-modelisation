@@ -6,41 +6,185 @@
 [ext_resource type="Script" uid="uid://y5u6hao5q0f3" path="res://MJ/movingwall_1.gd" id="4_kaylv"]
 [ext_resource type="PackedScene" uid="uid://dkv6bi6qy43y7" path="res://triggerDesacRobot.tscn" id="5_h7s17"]
 [ext_resource type="AudioStream" uid="uid://dyg6vad8l8tpy" path="res://audio/player/footstep.mp3" id="7_k1d9r"]
+[ext_resource type="Shader" uid="uid://p35rki6utvi8" path="res://MJ/jump_crt_filter.gdshader" id="9_l2crt"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uts1x"]
+[sub_resource type="Environment" id="Environment_jump_vibes"]
+background_mode = 1
+background_color = Color(0.98, 0.68, 0.42, 1)
+background_energy_multiplier = 0.72
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.86, 0.72, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.72
+tonemap_mode = 1
+tonemap_exposure = 1.02
+tonemap_white = 1.8
+glow_enabled = true
+glow_intensity = 0.38
+glow_strength = 1.15
+glow_bloom = 0.16
+fog_enabled = true
+fog_light_color = Color(1, 0.74, 0.5, 1)
+fog_light_energy = 0.16
+fog_density = 0.004
+adjustment_enabled = true
+adjustment_brightness = 1.04
+adjustment_contrast = 1.08
+adjustment_saturation = 1.14
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gridfloor"]
+size = Vector2(24, 72)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jump_floor"]
+albedo_color = Color(0.92, 0.79, 0.48, 1)
+roughness = 0.98
 
 [sub_resource type="BoxMesh" id="BoxMesh_wspun"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uts1x"]
-albedo_color = Color(18.892157, 18.892157, 18.892157, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pastel_blue"]
+albedo_color = Color(0.5, 0.78, 0.95, 1)
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pastel_salmon"]
+albedo_color = Color(0.95, 0.5, 0.56, 1)
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pastel_gold"]
+albedo_color = Color(1, 0.78, 0.34, 1)
+roughness = 0.96
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uts1x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jump_checkpoint"]
+albedo_color = Color(0.24, 0.36, 0.62, 1)
+roughness = 0.96
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wspun"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_05uvi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wspun"]
-albedo_color = Color(1, 0, 1, 1)
+albedo_color = Color(1, 0.68, 0.36, 1)
+roughness = 0.94
+emission_enabled = true
+emission = Color(0.05, 0.85, 1, 1)
+emission_energy_multiplier = 0.12
 
 [sub_resource type="BoxMesh" id="BoxMesh_05uvi"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6x0o"]
-albedo_color = Color(1, 0, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jump_platform"]
+albedo_color = Color(0.36, 0.79, 0.72, 1)
+roughness = 0.95
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kaylv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s6x0o"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kaylv"]
-albedo_color = Color(0.92908424, 0.0007023239, 0.92907804, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jump_moving"]
+albedo_color = Color(0.95, 0.43, 0.32, 1)
+roughness = 0.94
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h7s17"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jump_crt"]
+shader = ExtResource("9_l2crt")
+shader_parameter/scanline_strength = 0.065
+shader_parameter/grille_strength = 0.025
+shader_parameter/vignette_strength = 0.18
+shader_parameter/noise_strength = 0.011
+shader_parameter/tint = Color(0.92, 1, 0.9, 1)
 
 [node name="Node3D" type="Node3D" unique_id=2025118441]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1302458303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06600189, -0.52986956, 10.506782)
+transform = Transform3D(0.7631345, 0.52689683, -0.37417305, -0.09312498, 0.66261864, 0.74314487, 0.6394947, -0.53227466, 0.5547344, 0, 0, 0)
+light_color = Color(1, 0.78, 0.54, 1)
+light_energy = 1.18
+light_angular_distance = 2.0
+shadow_enabled = true
+shadow_bias = 0.045
+shadow_opacity = 0.48
+directional_shadow_blend_splits = true
+directional_shadow_fade_start = 0.92
+directional_shadow_max_distance = 76.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=593460805]
+environment = SubResource("Environment_jump_vibes")
+
+[node name="SoftBlueBounceLight" type="OmniLight3D" parent="." unique_id=749540159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4.5, -18)
+light_color = Color(0.48, 0.68, 1, 1)
+light_energy = 0.36
+omni_range = 18.0
+
+[node name="SoftPeachBounceLight" type="OmniLight3D" parent="." unique_id=91387583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 7, -40)
+light_color = Color(1, 0.6, 0.36, 1)
+light_energy = 0.42
+omni_range = 20.0
+
+[node name="SoftAmberBackLight" type="OmniLight3D" parent="." unique_id=1638704943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 8.5, -52)
+light_color = Color(1, 0.64, 0.32, 1)
+light_energy = 0.62
+omni_range = 26.0
+
+[node name="DecorGoofyCRT" type="Node3D" parent="." unique_id=1080563900]
+
+[node name="GridFloor" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=2123174578]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -2, -4.418155, -25)
+mesh = SubResource("PlaneMesh_gridfloor")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_floor")
+
+[node name="StartArchLeft" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=214774551]
+transform = Transform3D(0.52, 0, 0, 0, 2.1, 0, 0, 0, 0.52, -5.15, 1.05, 3.8)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_blue")
+
+[node name="StartArchRight" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=1851314784]
+transform = Transform3D(0.52, 0, 0, 0, 2.1, 0, 0, 0, 0.52, 5.15, 1.05, 3.8)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_salmon")
+
+[node name="StartArchTop" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=771876890]
+transform = Transform3D(5.8, 0, 0, 0, 0.46, 0, 0, 0, 0.48, 0, 2.4, 3.8)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_gold")
+
+[node name="LeftChunkyGuardB" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=1669985934]
+transform = Transform3D(0.42, 0, 0, 0, 0.28, 0, 0, 0, 9, -11, 5, -38)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_gold")
+
+[node name="RightChunkyGuardB" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=2105953627]
+transform = Transform3D(0.42, 0, 0, 0, 0.28, 0, 0, 0, 9, 0.5, 5, -38)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_blue")
+
+[node name="FloatingBlock01" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=1672458496]
+transform = Transform3D(0.55, 0.1, 0, -0.08, 0.42, 0, 0, 0, 0.55, -3.7, 2.2, -10.6)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_gold")
+
+[node name="FloatingBlock02" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=1713148062]
+transform = Transform3D(0.5, -0.12, 0, 0.1, 0.38, 0, 0, 0, 0.5, 4.5, 3.2, -15.4)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_salmon")
+
+[node name="FloatingBlock03" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=2024227681]
+transform = Transform3D(0.68, 0.06, 0, -0.05, 0.48, 0, 0, 0, 0.68, -9.098111, 4, -20.066357)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_blue")
+
+[node name="FloatingBlock04" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=418086826]
+transform = Transform3D(0.52, -0.1, 0, 0.08, 0.4, 0, 0, 0, 0.52, 1.6, 5.8, -32.8)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_gold")
+
+[node name="FloatingBlock05" type="MeshInstance3D" parent="DecorGoofyCRT" unique_id=621610542]
+transform = Transform3D(0.58, 0.08, 0, -0.07, 0.44, 0, 0, 0, 0.58, -9.1, 7.2, -44.6)
+mesh = SubResource("BoxMesh_wspun")
+surface_material_override/0 = SubResource("StandardMaterial3D_pastel_salmon")
 
 [node name="départ" type="StaticBody3D" parent="." unique_id=1027527132]
 
@@ -51,7 +195,7 @@ shape = SubResource("BoxShape3D_uts1x")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="départ" unique_id=44063221]
 transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_wspun")
-surface_material_override/0 = SubResource("StandardMaterial3D_uts1x")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_checkpoint")
 
 [node name="JoueurJump" type="CharacterBody3D" parent="." unique_id=1393673360]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -80,7 +224,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62812304, -8.002653)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform1" unique_id=1387989525]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_05uvi")
-surface_material_override/0 = SubResource("StandardMaterial3D_s6x0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform1" unique_id=1265567228]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -92,7 +236,7 @@ transform = Transform3D(0.9997748, 0, -0.021221612, 0, 1, 0, 0.021221612, 0, 0.9
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform2" unique_id=747775886]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, -0.06610298)
 mesh = SubResource("BoxMesh_05uvi")
-surface_material_override/0 = SubResource("StandardMaterial3D_s6x0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2" unique_id=2137862499]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -104,7 +248,7 @@ transform = Transform3D(0.9990993, 0, -0.042433664, 0, 1, 0, 0.042433664, 0, 0.9
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platform3" unique_id=1496837192]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, -0.06610298)
 mesh = SubResource("BoxMesh_05uvi")
-surface_material_override/0 = SubResource("StandardMaterial3D_s6x0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform3" unique_id=428024484]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -117,7 +261,7 @@ transform = Transform3D(0.99639887, 0, -0.08479089, 0, 1, 0, 0.08479089, 0, 0.99
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, -0.06610298)
 mesh = SubResource("BoxMesh_05uvi")
 skeleton = NodePath("../../Platform4")
-surface_material_override/0 = SubResource("StandardMaterial3D_s6x0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform4" unique_id=266646174]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, -0.006108284, 0, -0.071777344)
@@ -130,7 +274,7 @@ script = ExtResource("2_05uvi")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MovingPlatform" unique_id=121448959]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_s6x0o")
-surface_material_override/0 = SubResource("StandardMaterial3D_kaylv")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_moving")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlatform" unique_id=713246462]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -143,7 +287,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2825165, 3.7176642, -28.65
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_05uvi")
 skeleton = NodePath("../../Platform5")
-surface_material_override/0 = SubResource("StandardMaterial3D_s6x0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform5" unique_id=449833239]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -156,7 +300,7 @@ script = ExtResource("3_s6x0o")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MovingPlatform2" unique_id=1531743352]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_s6x0o")
-surface_material_override/0 = SubResource("StandardMaterial3D_kaylv")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_moving")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlatform2" unique_id=1000140845]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -169,7 +313,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.344676, 5.2383127, -37.737
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_05uvi")
 skeleton = NodePath("../../Platform6")
-surface_material_override/0 = SubResource("StandardMaterial3D_s6x0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform6" unique_id=2049631689]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -182,7 +326,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5046554, 5.677094, -43.178
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_05uvi")
 skeleton = NodePath("../../Platform7")
-surface_material_override/0 = SubResource("StandardMaterial3D_s6x0o")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_platform")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform7" unique_id=949381510]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -195,7 +339,7 @@ script = ExtResource("4_kaylv")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Movingwall1" unique_id=943047894]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_s6x0o")
-surface_material_override/0 = SubResource("StandardMaterial3D_kaylv")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_moving")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Movingwall1" unique_id=1513417697]
 transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
@@ -211,7 +355,28 @@ shape = SubResource("BoxShape3D_uts1x")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="arrivée" unique_id=2129445286]
 transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_wspun")
-surface_material_override/0 = SubResource("StandardMaterial3D_uts1x")
+surface_material_override/0 = SubResource("StandardMaterial3D_jump_checkpoint")
 
 [node name="triggerdesacrobot" parent="." unique_id=816027573 instance=ExtResource("5_h7s17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3670464, 7.2334814, -52.496975)
+
+[node name="RetroComputerOverlay" type="CanvasLayer" parent="." unique_id=600559484]
+layer = 30
+
+[node name="CRTEffect" type="ColorRect" parent="RetroComputerOverlay" unique_id=1048260646]
+material = SubResource("ShaderMaterial_jump_crt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SignalLabel" type="Label" parent="RetroComputerOverlay" unique_id=2016239546]
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 420.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.62, 1, 0.5, 0.58)
+theme_override_font_sizes/font_size = 22
+text = "JUMP.EXE  //  SIGNAL OK"

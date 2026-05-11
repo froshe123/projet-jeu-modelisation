@@ -1,7 +1,39 @@
 [gd_scene format=3 uid="uid://cmyufcwuppvt4"]
 
 [ext_resource type="PackedScene" uid="uid://chhsngxx6xevj" path="res://MJ/jeu_cultureG/pastoucher.tscn" id="1_bl1w3"]
+[ext_resource type="Shader" path="res://MJ/crt_ui_safe_filter.gdshader" id="2_crt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_culture_crt"]
+shader = ExtResource("2_crt")
+shader_parameter/scanline_strength = 0.045
+shader_parameter/grille_strength = 0.014
+shader_parameter/vignette_strength = 0.09
+shader_parameter/noise_strength = 0.006
+shader_parameter/tint = Color(0.45, 1, 0.38, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1819507674]
 
 [node name="Main" parent="." unique_id=1819274864 instance=ExtResource("1_bl1w3")]
+
+[node name="RetroComputerOverlay" type="CanvasLayer" parent="."]
+layer = 30
+
+[node name="CRTEffect" type="ColorRect" parent="RetroComputerOverlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+material = SubResource("ShaderMaterial_culture_crt")
+color = Color(1, 1, 1, 1)
+
+[node name="SignalLabel" type="Label" parent="RetroComputerOverlay"]
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 450.0
+offset_bottom = 54.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.62, 1, 0.5, 0.58)
+theme_override_font_sizes/font_size = 22
+text = "CULTURE.EXE  //  SIGNAL OK"
