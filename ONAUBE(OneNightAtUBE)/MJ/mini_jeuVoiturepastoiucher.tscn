@@ -1,22 +1,11 @@
 [gd_scene format=3 uid="uid://bvnejwhf4ouin"]
 
-[ext_resource type="Texture2D" uid="uid://cpq71gb2xbe0q" path="res://assets/fondEcran1.png" id="1_0awqr"]
 [ext_resource type="Script" uid="uid://c5lcrebwyr8qf" path="res://MJ/voituredeplacement.gd" id="1_g8ucr"]
 [ext_resource type="PackedScene" uid="uid://bnj5jye1sls2o" path="res://MJ/jeu course/villecircuit.glb" id="2_g8ucr"]
 [ext_resource type="PackedScene" uid="uid://ciblvknrc5qjt" path="res://MJ/jeu course/voiture.glb" id="2_wl8ts"]
 [ext_resource type="PackedScene" uid="uid://twysdcyf1du5" path="res://Bombe.tscn" id="4_o8oxu"]
 [ext_resource type="PackedScene" uid="uid://dkv6bi6qy43y7" path="res://triggerDesacRobot.tscn" id="5_ksxgp"]
 [ext_resource type="Script" uid="uid://bvsb541ajfjlx" path="res://MJ/area_3d.gd" id="6_bl8vd"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_baifl"]
-panorama = ExtResource("1_0awqr")
-
-[sub_resource type="Sky" id="Sky_ifotl"]
-sky_material = SubResource("PanoramaSkyMaterial_baifl")
-
-[sub_resource type="Environment" id="Environment_5ssc2"]
-background_mode = 2
-sky = SubResource("Sky_ifotl")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2tm7w"]
 
@@ -41,7 +30,6 @@ size = Vector3(1.7164307, 0.5196533, 1)
 [node name="Node3D" type="Node3D" unique_id=1819507674]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=704198207]
-environment = SubResource("Environment_5ssc2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=975759067]
 transform = Transform3D(0.92696726, -0.3730397, -0.039661996, 0.12497647, 0.20739725, 0.9702409, -0.35371262, -0.9043384, 0.23887168, 0, 9.623073, -0.7078806)

@@ -35,7 +35,8 @@ func _on_game_won():
 	answer_a_label.text = ""
 	answer_b_label.text = ""
 	counter_label.text = ""
-	message_label.text = "Appuie sur Echap pour quitter"
+	message_label.text = ""
+	AudioManager.play_victory()
 
 func _on_game_restarted():
 	message_label.text = "Mauvaise reponse ! On recommence avec de nouvelles questions..."

@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://chhsngxx6xevj" path="res://MJ/jeu_cultureG/pastoucher.tscn" id="1_bl1w3"]
 [ext_resource type="Shader" path="res://MJ/crt_ui_safe_filter.gdshader" id="2_crt"]
+[ext_resource type="Script" path="res://MJ/minigame_win_screen.gd" id="3_winlogic"]
+[ext_resource type="PackedScene" uid="uid://vt2rl1the6kc" path="res://MJ/jeujetpack/scenes/WinScreen.tscn" id="4_winscreen"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_culture_crt"]
 shader = ExtResource("2_crt")
@@ -12,8 +14,14 @@ shader_parameter/intensite_bruit = 0.006
 shader_parameter/teinte = Color(0.45, 1, 0.38, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1819507674]
+script = ExtResource("3_winlogic")
+minigame_id = "culture_g"
 
 [node name="Main" parent="." unique_id=1819274864 instance=ExtResource("1_bl1w3")]
+
+[node name="WinLayerInner" type="CanvasLayer" parent="."]
+
+[node name="WinScreen" parent="WinLayerInner" instance=ExtResource("4_winscreen")]
 
 [node name="RetroComputerOverlay" type="CanvasLayer" parent="."]
 layer = 30

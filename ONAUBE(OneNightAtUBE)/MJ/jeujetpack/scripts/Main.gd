@@ -1,18 +1,18 @@
 extends Node3D
 
 @onready var win_screen : Control = $WinLayerInner/WinScreen
-var _elapsed : float = 0.0
+
 func _ready():
+	win_screen.visible = false
+	if not JetpackManager.all_collected.is_connected(_on_all_collected):
+		JetpackManager.all_collected.connect(_on_all_collected)
 	for child in $bonjetpackcity.get_children():
 		if child is MeshInstance3D:
 			child.create_convex_collision()
 
 
-func _process(delta: float) -> void:
-	if not JetpackManager.game_over:
-		_elapsed += delta
-		if win_screen:
-			win_screen.set_elapsed(_elapsed)
+func _on_all_collected() -> void:
+	win_screen.visible = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

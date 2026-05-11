@@ -1,12 +1,87 @@
 [gd_scene format=3 uid="uid://vt2rl1the6kc"]
 
-[ext_resource type="Script" uid="uid://c5pkt0cfqddg" path="res://MJ/jeujetpack/scripts/WinScreen.gd" id="1_85mrv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_win_panel"]
+content_margin_left = 34.0
+content_margin_top = 28.0
+content_margin_right = 34.0
+content_margin_bottom = 28.0
+bg_color = Color(0.06, 0.07, 0.09, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.42, 0.8, 0.62, 0.85)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="WinScreen" type="Control" unique_id=1522807375]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_85mrv")
+mouse_filter = 2
+
+[node name="Fond" type="ColorRect" parent="." unique_id=2145722525]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.58)
+
+[node name="Centre" type="CenterContainer" parent="." unique_id=1752230656]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panneau" type="PanelContainer" parent="Centre" unique_id=779438098]
+custom_minimum_size = Vector2(480, 190)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_win_panel")
+
+[node name="Contenu" type="MarginContainer" parent="Centre/Panneau" unique_id=2097318609]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 12
+
+[node name="Textes" type="VBoxContainer" parent="Centre/Panneau/Contenu" unique_id=1356463070]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Titre" type="Label" parent="Centre/Panneau/Contenu/Textes" unique_id=1799177315]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 1, 0.68, 1)
+theme_override_font_sizes/font_size = 42
+text = "BRAVO !"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="Centre/Panneau/Contenu/Textes" unique_id=1107321807]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.95, 0.9, 1)
+theme_override_font_sizes/font_size = 22
+text = "Mini-jeu terminé"
+horizontal_alignment = 1
+
+[node name="Consigne" type="Label" parent="Centre/Panneau/Contenu/Textes" unique_id=1286798480]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 1, 0.5, 0.78)
+theme_override_font_sizes/font_size = 20
+text = "Appuie sur Echap pour revenir"
+horizontal_alignment = 1

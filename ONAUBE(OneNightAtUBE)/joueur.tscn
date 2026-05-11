@@ -16,6 +16,7 @@ script = ExtResource("1_2d0qe")
 shape = SubResource("CapsuleShape3D_r0tex")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1927264192]
+visible = false
 mesh = SubResource("CapsuleMesh_2d0qe")
 
 [node name="CameraPivot" type="Node3D" parent="CharacterBody3D" unique_id=934361839]

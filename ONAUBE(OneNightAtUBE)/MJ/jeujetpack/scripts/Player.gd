@@ -15,6 +15,7 @@ const ANIM_JETPACK := "jetpack"
 @export var cam_sens_y           := 0.15
 @export var cam_min_pitch        := -40.0
 @export var cam_max_pitch        := 60.0
+@export var respawn_y            := -80.0
 
 @onready var cam_root     : Node3D         = $CamRoot
 @onready var spring_arm   : SpringArm3D    = $CamRoot/SpringArm3D
@@ -28,11 +29,13 @@ var _fuel         : float
 var _jetpack_on   : bool   = false
 var _cam_pitch    : float  = 0.0
 var _current_anim : String = ""
+var _respawn_transform: Transform3D
 
 
 func _ready() -> void:
 	add_to_group("player")
 	JetpackManager.player = self
+	_respawn_transform = global_transform
 	_fuel = jetpack_max_fuel
 	if jp_particles: jp_particles.emitting = false
 	if jp_light:     jp_light.visible      = false
@@ -60,6 +63,9 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if JetpackManager.game_over: return
+	if global_position.y < respawn_y:
+		_respawn()
+		return
 	_move(delta)
 	_jetpack(delta)
 	_animate()
@@ -133,3 +139,14 @@ func _animate() -> void:
 
 func get_fuel_ratio() -> float:
 	return _fuel / jetpack_max_fuel
+
+func _respawn() -> void:
+	global_transform = _respawn_transform
+	velocity = Vector3.ZERO
+	_fuel = jetpack_max_fuel
+	_jetpack_on = false
+	_cam_pitch = 0.0
+	cam_root.rotation_degrees = Vector3.ZERO
+	spring_arm.rotation_degrees = Vector3.ZERO
+	if jp_particles: jp_particles.emitting = false
+	if jp_light: jp_light.visible = false

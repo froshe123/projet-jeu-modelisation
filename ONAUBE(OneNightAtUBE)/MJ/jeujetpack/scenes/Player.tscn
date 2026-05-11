@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jfu3euodrbvv"]
 
-[ext_resource type="Script" uid="uid://ddlocv31luhe2" path="res://scripts/Player.gd" id="1_plscr"]
+[ext_resource type="Script" uid="uid://ddlocv31luhe2" path="res://MJ/jeujetpack/scripts/Player.gd" id="1_plscr"]
 [ext_resource type="PackedScene" uid="uid://4pu2homr1d7n" path="res://assets/models/aniamtionBien.glb" id="2_v6fml"]
 [ext_resource type="PackedScene" uid="uid://dvgg1rpdy0m7f" path="res://assets/models/lebonjetpack.tscn" id="3_3li8b"]
 

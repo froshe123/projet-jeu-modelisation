@@ -64,6 +64,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="ScoreLabel" type="Label" parent="CenterPanel/VBoxContainer" unique_id=1877367432]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.705882, 0.705882, 1)
+theme_override_font_sizes/font_size = 30
+text = "SCORE : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="Button" type="Button" parent="CenterPanel/VBoxContainer" unique_id=1073124198]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2

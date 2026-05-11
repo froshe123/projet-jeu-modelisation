@@ -1,5 +1,7 @@
 extends Node
 
+signal minigame_completed(minigame_id: String)
+
 
 var time=0
 var night_duration=500	
@@ -43,7 +45,8 @@ func _process(delta: float) -> void:
 		if !win and !en_menu:
 			win=true
 			call_deferred("win_game")
-	if len(completed_minigames)==4:
+	if completed_minigames.size() == 4 and !win and !en_menu:
+		win = true
 		call_deferred("win_game")
 	
 	
@@ -93,6 +96,7 @@ func complete_minigame_and_disable_robot(minigame_id: String, target_robot_name:
 		return ""
 
 	completed_minigames[minigame_id] = true
+	minigame_completed.emit(minigame_id)
 	if target_robot_name.strip_edges().is_empty():
 		return disable_random_active_robot()
 	return _disable_specific_robot_once(target_robot_name)
@@ -100,9 +104,16 @@ func complete_minigame_and_disable_robot(minigame_id: String, target_robot_name:
 func _disable_specific_robot_once(robot_name: String) -> String:
 	disable_robot(robot_name)
 	return robot_name
-	
-	
+
+
 func win_game():
 	if !loose:
 		get_tree().change_scene_to_file("res://ecran_win.tscn")
-	
+
+func getScore() -> int:
+	if !loose and (win or completed_minigames.size() >= 4 or time >= night_duration):
+		return 100
+	if night_duration <= 0:
+		return 0
+	var ratio = clamp(time / night_duration, 0.0, 1.0)
+	return int(round(ratio * 100.0))

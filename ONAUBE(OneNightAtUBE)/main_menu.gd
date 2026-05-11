@@ -3,6 +3,7 @@ extends Control
 @onready var new_game_button: Button = $CenterPanel/MenuVBox/NewGame
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	new_game_button.grab_focus()
 	GameState.en_menu=true
 	AudioManager.play_menu_music()

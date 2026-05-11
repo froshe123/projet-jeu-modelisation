@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://dr2p8xlsi43he" path="res://Player.gd" id="6_47q24"]
 [ext_resource type="Script" uid="uid://bk0hdyu54eduo" path="res://UI.gd" id="7_bgnhv"]
 [ext_resource type="AudioStream" uid="uid://dyg6vad8l8tpy" path="res://audio/player/footstep.mp3" id="8_q7utl"]
-[ext_resource type="Texture2D" uid="uid://cqihmx6jegxdi" path="res://MJ/jeu_cultureG/textures/Capture d'écran 2026-05-03 012343.png" id="11_4t1jj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="Sky_1"]
 
@@ -278,5 +277,4 @@ offset_right = -5.0
 offset_bottom = -35.47998
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_4t1jj")
 expand_mode = 1

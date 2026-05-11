@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dkv6bi6qy43y7" path="res://triggerDesacRobot.tscn" id="5_h7s17"]
 [ext_resource type="AudioStream" uid="uid://dyg6vad8l8tpy" path="res://audio/player/footstep.mp3" id="7_k1d9r"]
 [ext_resource type="Shader" uid="uid://p35rki6utvi8" path="res://MJ/jump_crt_filter.gdshader" id="9_l2crt"]
+[ext_resource type="Script" path="res://MJ/minigame_win_screen.gd" id="10_winlogic"]
+[ext_resource type="PackedScene" uid="uid://vt2rl1the6kc" path="res://MJ/jeujetpack/scenes/WinScreen.tscn" id="11_winscreen"]
 
 [sub_resource type="Environment" id="Environment_jump_vibes"]
 background_mode = 1
@@ -95,6 +97,8 @@ shader_parameter/intensite_bruit = 0.011
 shader_parameter/teinte = Color(0.92, 1, 0.9, 1)
 
 [node name="Node3D" type="Node3D" unique_id=2025118441]
+script = ExtResource("10_winlogic")
+minigame_id = "jump"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1302458303]
 transform = Transform3D(0.7631345, 0.52689683, -0.37417305, -0.09312498, 0.66261864, 0.74314487, 0.6394947, -0.53227466, 0.5547344, 0, 0, 0)
@@ -359,6 +363,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jump_checkpoint")
 
 [node name="triggerdesacrobot" parent="." unique_id=816027573 instance=ExtResource("5_h7s17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3670464, 7.2334814, -52.496975)
+
+[node name="WinLayerInner" type="CanvasLayer" parent="."]
+
+[node name="WinScreen" parent="WinLayerInner" instance=ExtResource("11_winscreen")]
 
 [node name="RetroComputerOverlay" type="CanvasLayer" parent="." unique_id=600559484]
 layer = 30

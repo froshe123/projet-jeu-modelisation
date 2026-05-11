@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dcn6epxvxjunb"]
 
 [ext_resource type="PackedScene" uid="uid://bvnejwhf4ouin" path="res://MJ/mini_jeuVoiturepastoiucher.tscn" id="1_kkuv8"]
-[ext_resource type="Shader" path="res://MJ/jump_crt_filter.gdshader" id="2_crt"]
+[ext_resource type="Shader" uid="uid://p35rki6utvi8" path="res://MJ/jump_crt_filter.gdshader" id="2_crt"]
+[ext_resource type="Script" uid="uid://dj28vi2klnaqn" path="res://MJ/minigame_win_screen.gd" id="3_winlogic"]
+[ext_resource type="PackedScene" uid="uid://vt2rl1the6kc" path="res://MJ/jeujetpack/scenes/WinScreen.tscn" id="4_winscreen"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_course_crt"]
 shader = ExtResource("2_crt")
@@ -11,29 +13,33 @@ shader_parameter/intensite_vignette = 0.18
 shader_parameter/intensite_bruit = 0.011
 shader_parameter/teinte = Color(0.92, 1, 0.9, 1)
 
-[node name="Node3D" type="Node3D" unique_id=1819507674]
+[node name="Node3D2" type="Node3D" unique_id=1819507674]
+script = ExtResource("3_winlogic")
+minigame_id = "voiture"
 
 [node name="jeuvoiture" parent="." unique_id=695732037 instance=ExtResource("1_kkuv8")]
 
-[node name="RetroComputerOverlay" type="CanvasLayer" parent="."]
+[node name="WinLayerInner" type="CanvasLayer" parent="." unique_id=1568818411]
+
+[node name="WinScreen" parent="WinLayerInner" unique_id=1494614678 instance=ExtResource("4_winscreen")]
+
+[node name="RetroComputerOverlay" type="CanvasLayer" parent="." unique_id=1272102133]
 layer = 30
 
-[node name="CRTEffect" type="ColorRect" parent="RetroComputerOverlay"]
+[node name="CRTEffect" type="ColorRect" parent="RetroComputerOverlay" unique_id=839668529]
+material = SubResource("ShaderMaterial_course_crt")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-material = SubResource("ShaderMaterial_course_crt")
-color = Color(1, 1, 1, 1)
 
-[node name="SignalLabel" type="Label" parent="RetroComputerOverlay"]
+[node name="SignalLabel" type="Label" parent="RetroComputerOverlay" unique_id=750403050]
 offset_left = 24.0
 offset_top = 18.0
 offset_right = 450.0
 offset_bottom = 54.0
-mouse_filter = 2
 theme_override_colors/font_color = Color(0.62, 1, 0.5, 0.58)
 theme_override_font_sizes/font_size = 22
 text = "COURSE.EXE  //  SIGNAL OK"
