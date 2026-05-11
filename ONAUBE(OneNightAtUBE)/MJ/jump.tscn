@@ -88,11 +88,11 @@ roughness = 0.94
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jump_crt"]
 shader = ExtResource("9_l2crt")
-shader_parameter/scanline_strength = 0.065
-shader_parameter/grille_strength = 0.025
-shader_parameter/vignette_strength = 0.18
-shader_parameter/noise_strength = 0.011
-shader_parameter/tint = Color(0.92, 1, 0.9, 1)
+shader_parameter/intensite_lignes = 0.065
+shader_parameter/intensite_grille = 0.025
+shader_parameter/intensite_vignette = 0.18
+shader_parameter/intensite_bruit = 0.011
+shader_parameter/teinte = Color(0.92, 1, 0.9, 1)
 
 [node name="Node3D" type="Node3D" unique_id=2025118441]
 
