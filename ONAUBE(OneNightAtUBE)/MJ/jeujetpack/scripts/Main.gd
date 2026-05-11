@@ -6,9 +6,7 @@ func _ready():
 	win_screen.visible = false
 	if not JetpackManager.all_collected.is_connected(_on_all_collected):
 		JetpackManager.all_collected.connect(_on_all_collected)
-	for child in $bonjetpackcity.get_children():
-		if child is MeshInstance3D:
-			child.create_convex_collision()
+
 
 
 func _on_all_collected() -> void:

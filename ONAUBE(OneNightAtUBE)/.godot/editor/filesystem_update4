@@ -1,2 +1,2 @@
-res://final.tscn
-res://MJ/jeu_cultureG/pastoucher.tscn
+res://MJ/jeujetpack/scenes/Main.tscn
+res://MJ/jeujetpack/scripts/Main.gd
