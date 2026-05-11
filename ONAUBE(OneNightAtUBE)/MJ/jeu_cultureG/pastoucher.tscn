@@ -209,7 +209,7 @@ anchor_right = 1.0
 offset_top = 20.0
 offset_bottom = 80.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
 [node name="AnswerALabel" type="Label" parent="UI" unique_id=440957956]
@@ -217,7 +217,7 @@ offset_left = 20.0
 offset_top = 100.0
 offset_right = 400.0
 offset_bottom = 140.0
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 40
 
 [node name="AnswerBLabel" type="Label" parent="UI" unique_id=724534797]
 anchors_preset = 1
@@ -228,7 +228,7 @@ offset_top = 100.0
 offset_right = -20.0
 offset_bottom = 140.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 40
 horizontal_alignment = 2
 
 [node name="CounterLabel" type="Label" parent="UI" unique_id=354723505]
@@ -240,7 +240,7 @@ offset_top = -50.0
 offset_right = 200.0
 offset_bottom = -20.0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
 
 [node name="MessageLabel" type="Label" parent="UI" unique_id=1103675242]
 anchors_preset = 8
